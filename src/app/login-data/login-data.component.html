@@ -1,0 +1,83 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" formControlName="firstName" id="firstName" class="form-control">
+    <div *ngIf="f['firstName'].touched && f['firstName'].invalid" class="alert alert-danger">
+      <div *ngIf="f['firstName'].errors && f['firstName'].errors['required']">First name is required.</div>
+    </div>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" formControlName="lastName" id="lastName" class="form-control">
+    <div *ngIf="f['firstName'].touched && f['lastName'].invalid" class="alert alert-danger">
+      <div *ngIf="f['lastName'].errors && f['lastName'].errors['required']">Last name is required.</div>
+    </div>
+  </div>
+
+  <br>
+
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input formControlName="email" id="email" type="text" class="form-control">
+    <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+      <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+      <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email address.</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="form-group">
+    <label for="DOB">DOB</label>
+    <input formControlName="dob" id="dob" type="date" class="form-control">
+    <div *ngIf="f['dob'].touched && f['dob'].invalid" class="alert alert-danger">
+      <div *ngIf="f['dob'].errors && f['dob'].errors['required']">Date of birth is required.</div>
+      <!-- <div *ngIf="f['dob'].errors && f['dob'].errors['dob']">Please, enter valid date of birth.</div> -->
+    </div>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <label for="DOB">Gender</label><br>
+    <input id="male" type="radio" value="male" name="gender" formControlName="gender" />
+    <label class="custom-control-label" for="male">Male</label>
+  </div>
+
+  <div>
+    <input id="female" type="radio" value="female" name="gender" formControlName="gender" />
+    <label class="custom-control-label" for="female">Female</label>
+  </div>
+
+  <div>
+    <input id="other" type="radio" value="other" name="gender" formControlName="gender" />
+    <label class="custom-control-label" for="other">Other</label>
+  </div>
+
+  <br>
+
+  <div class="form-group">
+    <label for="mob">Mobile Nummber</label>
+    <input formControlName="mob" id="mob" type="text" class="form-control">
+    <div *ngIf="f['mob'].touched && f['mob'].invalid" class="alert alert-danger">
+      <div *ngIf="f['mob'].errors && f['mob'].errors['required']">Mobile number is required.</div>
+      <!-- <div *ngIf="f['mob'].errors && f['mob'].pattern['mob']">Please, enter valid email address.</div> -->
+    </div>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" id="password" class="form-control">
+    <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+      <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+    </div>
+  </div>
+  <br>
+
+  <button class="btn btn-primary" [disabled]="form.invalid" type="submit">Submit</button>
+  {{form.value | json}}
+</form>
